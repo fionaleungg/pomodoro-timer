@@ -15,20 +15,32 @@ min_to_hours = minutes/60
 
 if (howlong == "h"):
     print("okay so you'd like to work for", hours_to_min, "minutes")
-    print("let's calculate how many breaks you'll get!")
 elif (howlong == "m"):
     print("okay so you'd like to work for approxiatmately", min_to_hours, "hours")
-    print("let's calculate how many breaks you'll get!")
 
 cycles = 0
+time = 0
 
+short_break = 0
 if (howlong == "h"):
-    cycles = hours_to_min//30
-    work_time = cycles*25
-    break_time = cycles*5
-    sum = work_time + break_time
-    remainder = hours_to_min - sum
-    print("you'll get", cycles, "cycles with", work_time, "minutes of work time and", break_time, "minutes of break time")
-    print("one cycle means one work session (25 minutes) and one break session (5 minutes)")
-    if (remainder != 0):
-        print("you'll also get a remainder of", remainder)
+    time = hours_to_min
+    while (time > 0):
+        print("time to study!")
+        time = time - 25
+        print("time for a break!")
+        time = time - 5
+        short_break = short_break + 1
+        if (short_break % 4 == 0):
+            print("congrats! you've earned yourself a 30 minute break!")
+            time = time - 30
+elif (howlong == "m"):
+    time = minutes
+    while (time > 0):
+        print("time to study!")
+        time = time - 25
+        print("time for a break!")
+        time = time - 5
+        short_break = short_break + 1
+        if (short_break % 4 == 0):
+            print("congrats! you've earned yourself a 30 minute break!")
+            time = time - 30
