@@ -1,12 +1,14 @@
+seconds = 0
 minutes = 0
 hours = 0
 cycles = 0
 time = 0
 text = 0
+import time
 
 #intro
-print("hi, let's get productive! 🌼")
-howlong = str(input("how long do you want to work for? if you want to enter your time in hours, type 'h'. if you want to type your value in minutes, type 'm' "))
+print("welcome to your tomato timer, let's get productive! 🌼")
+howlong = input("how long do you want to work for? if you want to enter your time in hours, type 'h'. if you want to type your value in minutes, type 'm' ")
 if (howlong == "h" or howlong == "H"):
     hours = int(input("enter the amount of hours you'd like to work for "))
 elif (howlong == "m" or howlong == "M"):
@@ -17,7 +19,7 @@ else:
 #conversion
 hours_to_min = hours*60
 min_to_hours = minutes/60   
-        
+  
 if (howlong == "h"):
     print("okay so you'd like to work for", hours_to_min, "minutes")
 elif (howlong == "m"):
@@ -49,12 +51,21 @@ if (howlong == "h"):
             time = time - 30
 elif (howlong == "m"):
     time = minutes
+    seconds = minutes**60
     while (time > 0):
         study(text)
         time = time - 25
+        timer = 25*60
+        while timer: 
+            mins = timer // 60 
+            secs = timer % 60
+            timer = '{:02d}:{:02d}'.format(mins, secs) 
+            print(timer, end="\r") 
+            time.sleep(1)
+            timer -= 1 
         shortbreak(text)
         time = time - 5
         short_break = short_break + 1
         if (short_break % 4 == 0):
             longbreak(text)
-            time = time - 30
+            time = time - 30         
